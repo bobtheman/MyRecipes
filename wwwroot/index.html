@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>My Recipes</title>
+    <base href="/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-icons.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="icon" href="data:,">
+</head>
+
+<body style="margin: 0; padding: 0;">
+
+    <div id="app"></div>
+
+    <div id="blazor-error-ui">
+        <div>
+            An unhandled error has occurred.
+            <span id="blazor-error-message"></span>
+            <a href="" class="reload">Reload</a>
+            <span class="show-details-link" onclick="toggleErrorDetails()">Show details</span>
+        </div>
+        <div id="blazor-error-details" class="error-details"></div>
+    </div>
+
+    <script src="_framework/blazor.webview.js" autostart="false"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showError(message, details) {
+            const errorUi = document.getElementById('blazor-error-ui');
+            const messageEl = document.getElementById('blazor-error-message');
+            const detailsEl = document.getElementById('blazor-error-details');
+
+            if (messageEl) {
+                messageEl.textContent = message || "Unknown error";
+            }
+
+            if (detailsEl && details) {
+                detailsEl.textContent = details;
+            }
+
+            errorUi.style.display = 'block';
+        }
+
+        function toggleErrorDetails() {
+            const errorUi = document.getElementById('blazor-error-ui');
+            errorUi.classList.toggle('show-details');
+        }
+
+        window.addEventListener('error', event => {
+            const message = event.message || "Unknown error";
+            const stack = event.error?.stack || "";
+            showError(message, stack);
+        });
+
+        window.addEventListener('unhandledrejection', event => {
+            const reason = event.reason;
+            const message = reason?.message || reason?.toString() || "Unhandled rejection";
+            const stack = reason?.stack || "";
+            showError(message, stack);
+        });
+
+        document.addEventListener('focusin', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                setTimeout(() => {
+                    e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        });
+    </script>
+</body>
+
+</html>

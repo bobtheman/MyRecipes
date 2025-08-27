@@ -1,0 +1,16 @@
+﻿@page "/settings"
+
+<div class="scrollable-form">
+        <div class="input-group">
+        <select class="form-control w-100" @onchange="OnLanguageChanged">
+            @foreach (var language in LanguageList)
+            {
+                <option value="@language.LanguageCode"
+                        selected="@(AppState.SelectedLanguageCode == language.LanguageCode ? "selected" : null)">
+                    @LanguageStateService.GetFlagEmoji(language.LanguageCode) @language.LanguageName
+                </option>
+            }
+        </select>
+    </div>
+    <button class="btn btn-primary w-100" @onclick="SaveSettings">Save Settings</button>
+</div>

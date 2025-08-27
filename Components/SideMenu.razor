@@ -1,0 +1,27 @@
+@using Microsoft.AspNetCore.Components.Routing
+
+<nav class="side-menu @(Class)">
+    <div class="menu-header">
+        <span class="menu-title">@LocalizationService["MyRecipes"]</span>
+    </div>
+    <ul class="menu-list">
+        <li>
+            <NavLink href="/" Match="NavLinkMatch.All" @onclick="() => OnMenuItemClicked.InvokeAsync(null)">
+                <i class="bi bi-card-list"></i> @LocalizationService["Recipes"]
+            </NavLink>
+        </li>
+        <li>
+            <NavLink href="/favorites" Match="NavLinkMatch.All"  @onclick="() => OnMenuItemClicked.InvokeAsync(null)">
+                <i class="bi bi-star"></i> @LocalizationService["Favorites"]
+            </NavLink>
+        </li>
+        <li>
+            <NavLink href="/settings" Match="NavLinkMatch.All"  @onclick="() => OnMenuItemClicked.InvokeAsync(null)">
+                <i class="bi bi-gear"></i> @LocalizationService["Settings"]
+            </NavLink>
+        </li>
+    </ul>
+</nav>
+
+
+
