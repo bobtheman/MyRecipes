@@ -350,3 +350,90 @@ h1:focus {
         .show > .btn-outline-primary-custom.dropdown-toggle:focus {
             box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5);
         }
+/* === Dark Mode === */
+.dark-mode {
+    background-color: #181a1b;
+    color: #e0e0e0;
+}
+
+.dark-mode .side-menu {
+    background: #222326;
+    border-right: 1px solid #333;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.18);
+}
+
+.dark-mode .menu-list a {
+    color: #e0e0e0;
+}
+
+.dark-mode .menu-list a.active {
+    background-color: #444;
+    color: #ffb86c;
+}
+
+.dark-mode .btn,
+.dark-mode .btn-outline-primary {
+    background-color: #222326;
+    color: #ffb86c;
+    border-color: #ffb86c;
+}
+
+.dark-mode .form-control {
+    background-color: #222326;
+    color: #e0e0e0;
+    border-color: #333;
+}
+
+.dark-mode .menu-toggle .bi {
+    color: #fff;
+}
+
+/*======== Switch ==========*/
+/* The switch container */
+.input-group.no-border {
+    border: none !important;
+    padding: 0;
+}
+
+/* Switch styling */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555; /* Default dark mode color */
+    transition: 0.4s;
+    border-radius: 28px;
+}
+
+    .slider::before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+
+
+    input:checked + .slider::before {
+        transform: translateX(22px);
+    }

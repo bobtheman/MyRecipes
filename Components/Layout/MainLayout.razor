@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="layout-root @(menuOpen ? "menu-open" : "")">
-    <button class="menu-toggle" @onclick="ToggleMenu">&#9776;</button>
+    <button class="menu-toggle" @onclick="ToggleMenu"><i class="bi bi-three-dots"></i></button>
     <SideMenu class="@(menuOpen ? "open" : "")" OnMenuItemClicked="CloseMenu" />
     <div class="menu-backdrop" @onclick="CloseMenu"></div>
     <div class="main-content" @onclick="CloseMenu">

@@ -1,6 +1,7 @@
 namespace MyRecipes.Components.Pages
 {
     using Microsoft.AspNetCore.Components;
+    using Microsoft.JSInterop;
     using MyRecipes.Models;
     using MyRecipes.Services.Interface;
     using System.Globalization;
@@ -11,6 +12,7 @@ namespace MyRecipes.Components.Pages
         [Inject] ILanguageStateService LanguageStateService { get; set; }
         [Inject] ILocalizationService LocalizationService { get; set; }
         [Inject] private IVersionProvider VersionProvider { get; set; }
+        [Inject] IJSRuntime JSRuntime { get; set; }
         private List<LanguageModel> LanguageList { get; set; } = new List<LanguageModel>();
 
         protected string SelectedLanguageCode { get; set; }
@@ -20,13 +22,45 @@ namespace MyRecipes.Components.Pages
         private string Build;
         private string LatestVersion;
 
+        private bool _isDarkMode;
+        protected bool IsDarkMode
+        {
+            get => _isDarkMode;
+            set
+            {
+                if (_isDarkMode != value)
+                {
+                    _isDarkMode = value;
+                    _ = OnDarkModeChanged(value);
+                }
+            }
+        }
+
         protected override async Task OnInitializedAsync()
         {
             AppVersion = await VersionProvider.GetVersionAsync();
             LanguageList = await GetLanguageList();
             Version = VersionProvider.Version;
             Build = VersionProvider.Build;
+
+            IsDarkMode = await SecureStorage.GetAsync("isDarkMode") == "true";
+            await SetDarkModeClass(IsDarkMode);
+
             StateHasChanged();
+        }
+
+        private async Task OnDarkModeChanged(bool enable)
+        {
+            await SecureStorage.SetAsync("isDarkMode", enable.ToString().ToLower());
+            await SetDarkModeClass(enable);
+        }
+
+        private async Task SetDarkModeClass(bool enable)
+        {
+            if (JSRuntime != null)
+            {
+                await JSRuntime.InvokeVoidAsync("setDarkModeClass", enable);
+            }
         }
 
         #region Language
