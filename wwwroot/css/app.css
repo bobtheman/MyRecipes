@@ -10,20 +10,18 @@ a, .btn-link {
     text-decoration: none;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
     outline: none;
+}
+
+.clearfix10 {
+    height: 10px;
+}
+
+.clearfix20 {
+    height: 20px;
 }
 
 .content {
@@ -135,7 +133,7 @@ h1:focus {
     padding: 0 1.5rem 1.5rem 1.5rem;
     font-weight: 700;
     font-size: 1.4rem;
-    color: #512BD4;
+    color: #ffb86c;
     border-bottom: 1px solid #eee;
     margin-bottom: 1rem;
 }
@@ -162,12 +160,12 @@ h1:focus {
     }
 
         .menu-list a:hover {
-            color: #512BD4;
+            color: #ffb86c;
             background-color: #f5f3ff;
         }
 
         .menu-list a.active {
-            background-color: #512BD4;
+            background-color: #ffb86c;
             color: white;
         }
 /* ============================================================ Menu Toggle Button ============================================================ */
@@ -200,7 +198,7 @@ h1:focus {
     }
 
     .menu-toggle:hover span {
-        background-color: #512BD4;
+        background-color: #ffb86c;
     }
 /* ============================================================ Menu Backdrop (Mobile Only) ============================================================ */
 
@@ -316,15 +314,39 @@ h1:focus {
     }
 /* ============================================================ Buttons ============================================================ */
 
-.btn {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
+/* Custom black outline button based on btn-outline-success */
+.btn-outline-primary-custom {
+    color: #f5f3ff; /* black text */
+    border-color: #f5f3ff; /* black border */
 }
 
-.btn-primary {
-    background-color: #1b6ec2;
-    color: white;
-    border: none;
-}
+    .btn-outline-primary-custom:hover {
+        color: #fff; /* white text on hover */
+        background-color: #f5f3ff; /* black background */
+        border-color: #f5f3ff;
+    }
+
+    .btn-outline-primary-custom:focus,
+    .btn-outline-primary-custom.focus {
+        box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5); /* black focus ring */
+    }
+
+    .btn-outline-primary-custom.disabled,
+    .btn-outline-primary-custom:disabled {
+        color: #f5f3ff;
+        background-color: transparent;
+    }
+
+    .btn-outline-primary-custom:not(:disabled):not(.disabled):active,
+    .btn-outline-primary-custom:not(:disabled):not(.disabled).active,
+    .show > .btn-outline-primary-custom.dropdown-toggle {
+        color: #fff;
+        background-color: #f5f3ff;
+        border-color: #f5f3ff;
+    }
+
+        .btn-outline-primary-custom:not(:disabled):not(.disabled):active:focus,
+        .btn-outline-primary-custom:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-primary-custom.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5);
+        }
