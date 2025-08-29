@@ -1,6 +1,6 @@
 ﻿@page "/addrecipe"
 
-<h3>@LocalizationService["AddRecipe"]</h3>
+<h3 class="text-center">@LocalizationService["AddRecipe"]</h3>
 
 <div class="scrollable-form">
     <EditForm EditContext="_editContext" OnValidSubmit="@SaveItem">
@@ -22,14 +22,32 @@
             <InputText id="inputName" class="form-control" @bind-Value="recipeItem.Name" />
             <ValidationMessage For="@(() => recipeItem.Name)" />
         </div>
-@* 
+
         <div class="form-group">
             <label>@LocalizationService["Description"]</label>
             <InputText class="form-control" @bind-Value="recipeItem.Description" />
-        </div> *@
+        </div>
 
         <div class="d-flex gap-2 align-items-center mt-3">
-            <button class="btn btn-outline-primary-custom w-100"
+            <button @onclick="PickImage"
+                    class="btn btn-outline-primary-custom w-100"
+                    type="button">
+                <i class="bi bi-camera-fill me-2"></i>
+                @LocalizationService["AddPhoto"]
+            </button>
+        </div>
+
+        <div class="d-flex gap-2 align-items-center mt-3">
+                <button @onclick="TakeImage"
+                        class="btn btn-outline-primary-custom w-100"
+                        type="button">
+                    <i class="bi bi-camera-fill me-2"></i>
+                    @LocalizationService["Camera"]
+                </button>
+            </div>
+
+        <div class="d-flex gap-2 align-items-center mt-3">
+            <button class="btn btn-outline-primary w-100"
                     type="submit"
                     disabled="@AppStateService.ShowSpinner">
                 @if (AppStateService.ShowSpinner)

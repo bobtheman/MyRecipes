@@ -1,12 +1,33 @@
 ﻿@page "/"
 
-<div style="display: flex; align-items: center; justify-content: space-between;">
-    <h3 style="margin: 0;">@LocalizationService["Recipes"]</h3>
-    <button class="btn plus-btn" @onclick="AddNew" style="display: flex; align-items: center;">
-        <i class="bi bi-plus" style="margin-right: 4px; font-size: 2rem; font-weight: bold;"></i>
+<div style="display: flex; align-items: center; position: relative;">
+    <h3 style="margin: 0 auto; text-align: center;">
+        @LocalizationService["Recipes"]
+    </h3>
+    <button class="btn plus-btn" @onclick="AddNew" 
+            style="position: absolute; right: 0; display: flex; align-items: center;">
+        <i class="bi bi-plus" style="font-size: 2rem; font-weight: bold;"></i>
     </button>
 </div>
 
 <div class="scrollable-form">
-
+    @if (recipeList.RecipeItem != null && recipeList.RecipeItem.Any())
+    {
+        foreach (var recipe in recipeList.RecipeItem)
+        {
+            <form class="mb-3 border rounded p-3 bg-light">
+                <div class="mb-2">
+                    <label class="form-label fw-bold">@recipe.Name</label>
+                </div>
+@*                 <div class="mb-2">
+                    <span class="text-muted">@recipe.Description</span>
+                </div> *@
+                <!-- Add more fields as needed, e.g. ingredients, etc. -->
+            </form>
+        }
+    }
+    else
+    {
+        <div class="alert alert-info">No recipes found.</div>
+    }
 </div>

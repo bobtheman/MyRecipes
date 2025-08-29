@@ -9,6 +9,6 @@
         Task UpdateItemAsync(RecipeItem recipeItem);
         Task DeleteItemAsync(int id);
         Task CheckSelectedLanguageAsync();
-        Task<List<RecipeList>> GetAllRecipeListPagedAsync(int skip, int take);
+        Task<RecipeList> GetAllRecipeListPagedAsync(int skip, int take);
     }
 }

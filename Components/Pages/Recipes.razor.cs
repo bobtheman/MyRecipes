@@ -17,7 +17,7 @@ namespace MyRecipes.Components.Pages
 
         [Inject] private NavigationManager NavigationManager { get; set; }
 
-        private List<RecipeList> recipeList = new();
+        private RecipeList recipeList = new RecipeList();
 
         private int currentPage = 1;
         private int pageSize = 4;
@@ -63,7 +63,7 @@ namespace MyRecipes.Components.Pages
                 int skip = (currentPage - 1) * pageSize;
 
                 recipeList = await OfflineDataService.GetAllRecipeListPagedAsync(skip, pageSize);
-                totalItems = recipeList.Count > 0 ? recipeList[0].TotalCount : 0;
+                totalItems = recipeList.RecipeItem.Count;
                 totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
             }
             catch (Exception ex)

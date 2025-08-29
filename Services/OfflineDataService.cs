@@ -55,7 +55,9 @@
                     return;
                 }
 
-                await db.InsertAsync(recipeItem);
+                //await db.InsertAsync(recipeItem);
+
+                var result = await db.InsertAsync(recipeItem);
             }
             catch (SQLiteException sqliteEx)
             {
@@ -146,38 +148,44 @@
             }
         }
 
-        public async Task<List<RecipeList>> GetAllRecipeListPagedAsync(int skip, int take)
+        public async Task<RecipeList> GetAllRecipeListPagedAsync(int skip, int take)
         {
             try
             {
                 if (db == null)
                 {
-                    return new List<RecipeList>();
+                    return new RecipeList();
                 }
 
-                var recipeList = await db.Table<RecipeList>()
-                                         .Skip(skip)
-                                         .Take(take)
-                                         .ToListAsync();
+                var recipeList = new RecipeList();
 
-                foreach (var recipe in recipeList)
-                {
-                    recipe.RecipeItem = await db.Table<RecipeItem>()
-                                                   .Where(x => x.Id == recipe.Id)
-                                                   .ToListAsync();
-                }
+
+                //var recipeList = await db.Table<RecipeList>()
+                //                         .Skip(skip)
+                //                         .Take(take)
+                //                         .ToListAsync();
+
+                //foreach (var recipe in recipeList)
+                //{
+                // Select all usages of: await db.Table<RecipeItem>()
+                // Example usage (uncomment and adapt as needed):
+
+                recipeList.RecipeItem = await db.Table<RecipeItem>().ToListAsync();
+                //                                   .Where(x => x.Id == recipe.Id)
+                //                                   .ToListAsync();
+                //}
 
                 return recipeList;
             }
             catch (SQLiteException sqliteEx)
             {
                 Debug.WriteLine("[GetAllRecipeListPagedAsync] SQLite error: " + sqliteEx.Message);
-                return new List<RecipeList>();
+                return new RecipeList();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("[GetAllRecipeListPagedAsync] Unexpected error: " + ex);
-                return new List<RecipeList>();
+                return new RecipeList();
             }
         }
 

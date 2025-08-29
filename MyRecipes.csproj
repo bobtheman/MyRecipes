@@ -53,10 +53,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
+    <PackageReference Include="CommunityToolkit.Maui.Core" Version="11.2.0" />
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
+    <PackageReference Include="Plugin.Maui.Audio" Version="4.0.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+    <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,6 +80,12 @@
 
   <ItemGroup>
     <Folder Include="Components\Shared\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiAsset Update="Resources\Raw\beep.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </MauiAsset>
   </ItemGroup>
 
 </Project>

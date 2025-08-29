@@ -4,6 +4,8 @@ using MyRecipes.Models;
 using MyRecipes.Services;
 using MyRecipes.Services.Interface;
 using System.Reflection;
+using CommunityToolkit.Maui;
+using ZXing.Net.Maui.Controls;
 
 namespace MyRecipes
 {
@@ -31,6 +33,8 @@ namespace MyRecipes
 
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
+                .UseBarcodeReader()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -46,6 +50,7 @@ namespace MyRecipes
             // Register services
             builder.Services.AddScoped<IAppStateService, AppStateService> ();
             builder.Services.AddScoped<IAlertService, AlertService>();
+            builder.Services.AddScoped<ICameraService, CameraService>();
             builder.Services.AddScoped<IImageService, ImageService>();
             builder.Services.AddScoped<ILanguageStateService, LanguageStateService>();
             builder.Services.AddScoped<ILocalizationService, LocalizationService>();

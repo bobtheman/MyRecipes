@@ -8,3 +8,18 @@
         @Body
     </div>
 </div>
+
+@if (AppStateService.ShowSpinner)
+{
+    <div class="spinner-overlay">
+        <div class="spinner"></div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(AlertService.AlertMessage))
+{
+    <div class="alert @AlertService.AlertType" role="alert"
+         style="position: fixed; top: 1rem; left: 50%; transform: translateX(-50%); z-index: 1050; min-width: 300px; text-align: center;">
+        @AlertService.AlertMessage
+    </div>
+}
