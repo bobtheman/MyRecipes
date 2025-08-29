@@ -1,0 +1,47 @@
+﻿@page "/addrecipe"
+
+<h3>@LocalizationService["AddRecipe"]</h3>
+
+<div class="scrollable-form">
+    <EditForm EditContext="_editContext" OnValidSubmit="@SaveItem">
+        <DataAnnotationsValidator />
+
+@*         <!-- Image Section -->
+        <div class="image-section">
+            <img src="@recipeItem.ImagePath" alt="@LocalizationService["RecipeImage"] style="width:200px;height:200px;" />
+            <div>
+                <button class="btn plus-btn" @onclick="AddImage">
+                    <i class="bi bi-plus"></i>
+                </button>
+                <button type="button" @onclick="TakeImage">@LocalizationService["TakeImage"]</button>
+            </div>
+        </div> *@
+
+        <div class="form-group mb-3">
+            <label for="inputName">@LocalizationService["Name"]</label>
+            <InputText id="inputName" class="form-control" @bind-Value="recipeItem.Name" />
+            <ValidationMessage For="@(() => recipeItem.Name)" />
+        </div>
+@* 
+        <div class="form-group">
+            <label>@LocalizationService["Description"]</label>
+            <InputText class="form-control" @bind-Value="recipeItem.Description" />
+        </div> *@
+
+        <div class="d-flex gap-2 align-items-center mt-3">
+            <button class="btn btn-outline-primary-custom w-100"
+                    type="submit"
+                    disabled="@AppStateService.ShowSpinner">
+                @if (AppStateService.ShowSpinner)
+                {
+                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                }
+                else
+                {
+                    <i class="bi bi-save me-2"></i>
+                }
+                @LocalizationService["Save"]
+            </button>
+        </div>
+    </EditForm>
+</div>

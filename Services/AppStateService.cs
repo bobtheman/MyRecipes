@@ -6,6 +6,13 @@
     {
         public event Action? OnChange;
 
+        private string _selectedPage = string.Empty;
+        public string SelectedPage
+        {
+            get => _selectedPage;
+            set => SetProperty(ref _selectedPage, value);
+        }
+
         private bool _showSpinner = false;
         public bool ShowSpinner
         {

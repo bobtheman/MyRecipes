@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddRecipe" xml:space="preserve">
+    <value>Add Recipe</value>
+  </data>
   <data name="DarkMode" xml:space="preserve">
     <value>Dark Mode</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DescriptionMaxLength" xml:space="preserve">
+    <value>Description can't exceed 1000 characters</value>
+  </data>
+  <data name="EditRecipe" xml:space="preserve">
+    <value>Edit Recipe</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
@@ -132,10 +144,25 @@
   <data name="MyRecipes" xml:space="preserve">
     <value>My Recipes</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameIsRequired" xml:space="preserve">
+    <value>Name Is Required</value>
+  </data>
+  <data name="RecipeImage" xml:space="preserve">
+    <value>Recipe Image</value>
+  </data>
   <data name="Recipes" xml:space="preserve">
     <value>Recipes</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="TakeImage" xml:space="preserve">
+    <value>Take Image</value>
   </data>
 </root>

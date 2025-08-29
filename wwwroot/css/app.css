@@ -437,3 +437,24 @@ h1:focus {
     input:checked + .slider::before {
         transform: translateX(22px);
     }
+
+/********************/
+.plus-btn {
+    border:none!important;
+}
+
+/********************/
+.form-check-input:checked {
+    background-color: #ffb86c !important;
+    border-color: #ffb86c !important;
+}
+
+.form-check-input:focus {
+    border-color: #ffb86c !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 184, 108, 0.25) !important;
+}
+
+.form-check-input {
+    cursor: pointer !important;
+}
+/********************/

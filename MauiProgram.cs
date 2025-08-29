@@ -44,10 +44,12 @@ namespace MyRecipes
 #endif
 
             // Register services
-            builder.Services.AddScoped<IAppStateService, AppStateService > ();
+            builder.Services.AddScoped<IAppStateService, AppStateService> ();
+            builder.Services.AddScoped<IAlertService, AlertService>();
             builder.Services.AddScoped<IImageService, ImageService>();
-            builder.Services.AddScoped<ILanguageStateService, LanguageStateService > ();
+            builder.Services.AddScoped<ILanguageStateService, LanguageStateService>();
             builder.Services.AddScoped<ILocalizationService, LocalizationService>();
+            builder.Services.AddScoped<IOfflineDataService, OfflineDataService>();
             builder.Services.AddScoped<IRecipeService, RecipeService>();
             builder.Services.AddScoped<IVersionProvider, VersionProvider>();
 

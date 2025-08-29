@@ -1,6 +1,11 @@
 ﻿@page "/"
 
-<h3>@LocalizationService["Recipes"]</h3>
+<div style="display: flex; align-items: center; justify-content: space-between;">
+    <h3 style="margin: 0;">@LocalizationService["Recipes"]</h3>
+    <button class="btn plus-btn" @onclick="AddNew" style="display: flex; align-items: center;">
+        <i class="bi bi-plus" style="margin-right: 4px; font-size: 2rem; font-weight: bold;"></i>
+    </button>
+</div>
 
 <div class="scrollable-form">
 
